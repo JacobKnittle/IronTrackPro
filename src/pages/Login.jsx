@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Login() {
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -5,10 +7,10 @@ export default function Login() {
         <div className="text-center ">
           <h1 className="text-5xl font-bold">Login Below</h1>
           <p className="py-6 max-w-md">
-            Don't have an account sign up{' '}
-            <a href="#" className="underline">
+            Do not have an account sign up{' '}
+            <Link to="/signup" className="underline">
               here.
-            </a>
+            </Link>
           </p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

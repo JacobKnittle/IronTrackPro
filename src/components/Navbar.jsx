@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 export default function Navbar() {
   return (
     <nav className="navbar bg-base-100">
@@ -5,12 +7,15 @@ export default function Navbar() {
         <a className="btn btn-ghost normal-case text-xl">Iron Track Pro</a>
       </div>
       <div className="flex-none">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 gap-2">
           <li>
-            <a>Login</a>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <a>Sign up</a>
+            <NavLink to="/login">Login</NavLink>
+          </li>
+          <li>
+            <NavLink to="/signup">Sign up</NavLink>
           </li>
         </ul>
       </div>
