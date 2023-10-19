@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Home from './pages/Home';
+import WorkoutsPage from './pages/WorkoutsPage';
 function App() {
   return (
     <BrowserRouter>
@@ -36,6 +37,7 @@ function App() {
               </>
             }
           />
+          <Route path="workouts" element={<WorkoutsPage />} />
         </Routes>
       </main>
     </BrowserRouter>

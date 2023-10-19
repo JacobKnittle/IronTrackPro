@@ -5,8 +5,8 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      colors: {
-        logoBlack: '#1a1a1a',
+      screens: {
+        xs: '460px',
       },
     },
   },
