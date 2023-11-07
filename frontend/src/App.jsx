@@ -11,6 +11,15 @@ function App() {
       <main>
         <Routes>
           <Route
+            path="workouts"
+            element={
+              <>
+                <Navbar />
+                <WorkoutsPage />
+              </>
+            }
+          />
+          <Route
             path="/"
             element={
               <>

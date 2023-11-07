@@ -9,6 +9,9 @@ export default function Navbar() {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1 gap-2 xs:hidden md:flex">
           <li>
+            <NavLink to="workouts">Workouts</NavLink>
+          </li>
+          <li>
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
