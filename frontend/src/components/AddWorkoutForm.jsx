@@ -27,7 +27,7 @@ export default function AddWorkoutForm() {
           />
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Add Exercise</button>
+          <button className="btn btn-primary">Start</button>
         </div>
       </form>
     </div>

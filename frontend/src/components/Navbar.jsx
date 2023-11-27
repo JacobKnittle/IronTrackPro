@@ -9,16 +9,16 @@ export default function Navbar() {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1 gap-2 xs:hidden md:flex">
           <li>
-            <NavLink to="workouts">Workouts</NavLink>
+            <NavLink to="workouts">Add Workout</NavLink>
           </li>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/">Show Workouts</NavLink>
           </li>
           <li>
-            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/login">Stats</NavLink>
           </li>
           <li>
-            <NavLink to="/signup">Sign up</NavLink>
+            <NavLink to="/">Logout</NavLink>
           </li>
         </ul>
       </div>

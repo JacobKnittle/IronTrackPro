@@ -1,56 +1,39 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-import Home from './pages/Home';
-import WorkoutsPage from './pages/WorkoutsPage';
+import LandingPage from './pages/LandingPage';
+import Dashboard from './pages/Dashboard';
+import HomeLayout from './pages/HomeLayout';
+import Error from './pages/Error';
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <HomeLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        index: true,
+        element: <LandingPage />,
+      },
+      {
+        path: 'login',
+        element: <Login />,
+      },
+      {
+        path: 'signup',
+        element: <SignUp />,
+      },
+      {
+        path: 'dashboard',
+        element: <Dashboard />,
+      },
+    ],
+  },
+]);
+
 function App() {
-  return (
-    <BrowserRouter>
-      <main>
-        <Routes>
-          <Route
-            path="workouts"
-            element={
-              <>
-                <Navbar />
-                <WorkoutsPage />
-              </>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <>
-                <Navbar />
-                <Home />
-              </>
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <>
-                <Navbar />
-                <Login />
-              </>
-            }
-          />
-          <Route
-            path="signup"
-            element={
-              <>
-                <Navbar />
-                <SignUp />
-              </>
-            }
-          />
-          <Route path="workouts" element={<WorkoutsPage />} />
-        </Routes>
-      </main>
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

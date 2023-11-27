@@ -27,7 +27,7 @@ export default function WorkoutModal() {
             onClick={closeModal}>
             ✕
           </button>
-          <h3 className="font-bold text-lg">Add Your Workout Below.</h3>
+          <h3 className="font-bold text-lg">Start New Workout</h3>
           <AddWorkoutForm />
         </div>
       </dialog>

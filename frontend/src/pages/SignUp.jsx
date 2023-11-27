@@ -17,6 +17,14 @@ export default function SignUp() {
           <form className="card-body">
             <div className="form-control pb-3">
               <input
+                type="text"
+                placeholder="Full Name"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control pb-3">
+              <input
                 type="email"
                 placeholder="Email"
                 className="input input-bordered"
@@ -32,7 +40,9 @@ export default function SignUp() {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <Link to="/dashboard" className="btn btn-primary">
+                Login
+              </Link>
             </div>
           </form>
         </div>
