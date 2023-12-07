@@ -6,6 +6,12 @@ import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
 import HomeLayout from './pages/HomeLayout';
 import Error from './pages/Error';
+import AllWorkouts from './pages/AllWorkouts';
+import AddWorkout from './pages/AddWorkout';
+import Stats from './pages/Stats';
+import Profile from './pages/Profile';
+import ViewWorkout from './pages/ViewWorkout';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -27,6 +33,13 @@ const router = createBrowserRouter([
       {
         path: 'dashboard',
         element: <Dashboard />,
+        children: [
+          { index: true, element: <AllWorkouts /> },
+          { path: 'addworkout', element: <AddWorkout /> },
+          { path: 'viewworkout/:id', element: <ViewWorkout /> },
+          { path: 'stats', element: <Stats /> },
+          { path: 'profile', element: <Profile /> },
+        ],
       },
     ],
   },

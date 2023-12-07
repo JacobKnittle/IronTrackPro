@@ -21,6 +21,7 @@ export default function Login() {
                 placeholder="Email"
                 className="input input-bordered"
                 required
+                value="bob@live.com"
               />
             </div>
             <div className="form-control">
@@ -29,10 +30,13 @@ export default function Login() {
                 placeholder="Password"
                 className="input input-bordered"
                 required
+                value="123"
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <Link to="/dashboard" className="btn btn-primary">
+                Login
+              </Link>
             </div>
           </form>
         </div>
