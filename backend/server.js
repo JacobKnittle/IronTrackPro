@@ -45,6 +45,7 @@ app.get('/workouts', async (req, res) => {
 app.get('/workouts/:id', async (req, res) => {
   try {
     const workout = await Workout.findById(req.params.id);
+
     res.send(workout);
   } catch (error) {
     res.status(500).send({ message: error.message });
@@ -59,6 +60,16 @@ app.post('/workouts', async (req, res) => {
   } catch (error) {
     res.status(500).send({ message: error.message });
   }
+});
+app.put('/workouts/:id', async (req, res) => {
+  const { id } = req.params;
+  const { workoutName } = req.body;
+  const updatedWorkout = await Workout.findByIdAndUpdate(
+    id,
+    { workoutName },
+    { new: true }
+  );
+  res.send(updatedWorkout);
 });
 
 app.delete('/workouts/:id', async (req, res) => {
