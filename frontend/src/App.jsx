@@ -11,7 +11,6 @@ import AddWorkout from './pages/AddWorkout';
 import Stats from './pages/Stats';
 import Profile from './pages/Profile';
 import ViewWorkout from './pages/ViewWorkout';
-import EditWorkout from './pages/EditWorkout';
 
 const router = createBrowserRouter([
   {
@@ -38,7 +37,6 @@ const router = createBrowserRouter([
           { index: true, element: <AllWorkouts /> },
           { path: 'addworkout', element: <AddWorkout /> },
           { path: 'viewworkout/:id', element: <ViewWorkout /> },
-          { path: 'editworkout/:id', element: <EditWorkout /> },
           { path: 'stats', element: <Stats /> },
           { path: 'profile', element: <Profile /> },
         ],

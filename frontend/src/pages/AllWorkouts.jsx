@@ -25,12 +25,10 @@ const AllWorkouts = () => {
           <h4>Exercise:</h4>
 
           <div className="card-actions justify-start">
-            <Link to={`/dashboard/viewworkout/${workout._id}`}>
+            <Link to={`/dashboard/viewworkout/:id`}>
               <button className="btn btn-primary">Open Workout</button>
             </Link>
-            <Link to={`/dashboard/editworkout/${workout._id}`}>
-              <button className="btn">Edit Workout</button>
-            </Link>
+            <button className="btn">Edit Workout</button>
             <button
               className="btn btn-error"
               onClick={() => handleDelete(workout._id)}>
