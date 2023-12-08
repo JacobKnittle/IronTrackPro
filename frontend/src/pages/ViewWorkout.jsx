@@ -5,6 +5,7 @@ const ViewWorkout = () => {
   const [workout, setWorkout] = useState({});
 
   const { id } = useParams();
+
   const navigate = useNavigate();
 
   useEffect(() => {
