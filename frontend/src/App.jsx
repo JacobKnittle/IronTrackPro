@@ -11,44 +11,49 @@ import AddWorkout from './components/AddWorkout';
 
 import ViewWorkout from './pages/ViewWorkout';
 import EditWorkout from './components/EditWorkout';
-import AddExercise from './components/AddExercise';
+import { WorkoutsContextProvider } from './context/WorkoutsContext';
+// import AddExercise from './components/AddExercise';
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <HomeLayout />,
-    errorElement: <Error />,
-    children: [
-      {
-        index: true,
-        element: <LandingPage />,
-      },
-      {
-        path: 'login',
-        element: <Login />,
-      },
-      {
-        path: 'signup',
-        element: <SignUp />,
-      },
-      {
-        path: 'dashboard',
-        element: <Dashboard />,
-        children: [
-          { index: true, element: <AllWorkouts /> },
-          { path: 'addworkout', element: <AddWorkout /> },
-          { path: 'viewworkout/:id', element: <ViewWorkout /> },
-          { path: 'editworkout/:id', element: <EditWorkout /> },
-          { path: 'addexercise/:id', element: <AddExercise /> },
-          { path: 'editexercise/:id', element: <EditWorkout /> },
-        ],
-      },
-    ],
-  },
+	{
+		path: '/',
+		element: <HomeLayout />,
+		errorElement: <Error />,
+		children: [
+			{
+				index: true,
+				element: <LandingPage />,
+			},
+			{
+				path: 'login',
+				element: <Login />,
+			},
+			{
+				path: 'signup',
+				element: <SignUp />,
+			},
+			{
+				path: 'dashboard',
+				element: <Dashboard />,
+				children: [
+					{ index: true, element: <AllWorkouts /> },
+					{ path: 'addworkout', element: <AddWorkout /> },
+					{ path: 'viewworkout/:id', element: <ViewWorkout /> },
+					{ path: 'editworkout/:id', element: <EditWorkout /> },
+					// { path: 'addexercise/:id', element: <AddExercise /> },
+					// { path: 'editexercise/:id', element: <EditWorkout /> },
+				],
+			},
+		],
+	},
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+	return (
+		<WorkoutsContextProvider>
+			<RouterProvider router={router} />;
+		</WorkoutsContextProvider>
+	);
 }
 
 export default App;

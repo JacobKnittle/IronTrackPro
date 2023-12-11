@@ -1,64 +1,75 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
+import { FaExpandAlt } from 'react-icons/fa';
+import { WorkoutsContext } from '../context/WorkoutsContext';
 const AllWorkouts = () => {
-  const [workouts, setWorkouts] = useState([]);
+	const { workouts, setWorkouts } = useContext(WorkoutsContext);
+	const navigate = useNavigate();
+	useEffect(() => {
+		async function fetchData() {
+			const response = await axios.get('http://localhost:8000/workouts');
 
-  useEffect(() => {
-    const fetchWorkouts = async () => {
-      const res = await axios.get('http://localhost:8000/workouts');
-      setWorkouts(res.data);
-    };
-    fetchWorkouts();
-  }, [workouts]);
+			setWorkouts(response.data.data.workouts);
+		}
+		fetchData();
+	}, []);
 
-  const handleDeleteWorkout = async (id) => {
-    await axios.delete(`http://localhost:8000/workouts/${id}`);
-    setWorkouts(workouts.filter((workout) => workout._id !== id));
-  };
+	const handleDelete = async (id) => {
+		try {
+			const response = await axios.delete(
+				`http://localhost:8000/workouts/${id}`
+			);
+			setWorkouts(workouts.filter((workout) => workout.workout_id !== id));
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
-  const handleDeleteExercise = async (id) => {};
-  return (
-    <div className="card w-96 bg-neutral text-neutral-content">
-      {workouts.map((workout) => (
-        <div className="card-body " key={workout._id}>
-          <h1 className="card-title">{workout.workoutName}</h1>
-          <h2 className="card-title">{workout.date}</h2>
-          {workout.exercises.map((exercise, index) => (
-            <h4 key={index}>
-              {`${exercise.exerciseName} : `}
-              <Link to={`/dashboard/editexercise/${workout._id}}`}>
-                <button>
-                  <FaEdit />
-                </button>
-              </Link>
-              <button>
-                <MdDelete />
-              </button>
-            </h4>
-          ))}
+	const handleUpdate = async (id) => {
+		navigate(`/dashboard/editworkout/${id}`);
+	};
 
-          <div className="card-actions justify-start">
-            <Link to={`/dashboard/addexercise/${workout._id}`}>
-              <button className="btn btn-primary">Add Exercise</button>
-            </Link>
-            <Link to={`/dashboard/viewworkout/${workout._id}`}>
-              <button className="btn btn-primary">Open Workout</button>
-            </Link>
-            <Link to={`/dashboard/editworkout/${workout._id}`}>
-              <button className="btn">Edit Workout</button>
-            </Link>
-            <button
-              className="btn btn-error"
-              onClick={() => handleDeleteWorkout(workout._id)}>
-              Delete
-            </button>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+	return (
+		<div className=' flex flex-1 flex-wrap m-6 gap-10'>
+			{workouts &&
+				workouts.map((workout) => (
+					<div
+						className='card w-1/3 bg-neutral text-neutral-content'
+						key={workout.workout_id}
+					>
+						<div className='card-body items-center text-center'>
+							<h2 className='card-title'>
+								{workout.workoutname}{' '}
+								<Link to={`/dashboard/viewworkout/${workout.workout_id}`}>
+									<FaExpandAlt />
+								</Link>
+							</h2>
+							<button
+								onClick={() => handleUpdate(workout.workout_id)}
+								className='btn btn-primary'
+							>
+								<FaEdit />
+							</button>
+
+							<h5 className='flex'>
+								Exercise: <FaEdit /> <MdDelete />
+							</h5>
+							<button className='btn'>Add Exercise</button>
+							<div className='card-actions justify-end'>
+								<button
+									onClick={() => handleDelete(workout.workout_id)}
+									className='btn text-xl'
+								>
+									<MdDelete />
+								</button>
+							</div>
+						</div>
+					</div>
+				))}
+		</div>
+	);
 };
 export default AllWorkouts;

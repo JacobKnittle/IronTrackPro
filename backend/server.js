@@ -1,21 +1,17 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const app = express();
 const cors = require('cors');
 require('dotenv').config();
+const workoutRoutes = require('./routes/workoutRoutes');
+const port = process.env.PORT || 8000;
 
 app.use(cors());
 app.use(express.json());
 
-const workoutRoutes = require('./routes/WorkoutRoutes');
-const exerciseRoutes = require('./routes/ExerciseRoutes');
+app.use('/', workoutRoutes);
 
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log('Connected to DB!'))
-  .catch((error) => console.log(error.message));
-
-app.use('/workouts', workoutRoutes);
-app.use('/exercises', exerciseRoutes);
-
-app.listen(8000, () => console.log('Server is running on Port 8000'));
+app.get('/exercises', async (req, res) => {}),
+	app.post('/exercises', async (req, res) => {}),
+	app.put('/exercises/:id', async (req, res) => {}),
+	app.delete('/exercises/:id', async (req, res) => {}),
+	app.listen(port, () => console.log(`Server is running on Port ${port}`));
