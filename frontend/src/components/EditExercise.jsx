@@ -3,14 +3,14 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 const EditWorkout = () => {
   const [workout, setWorkout] = useState({
-    workoutName: '',
+    exerciseName: '',
   });
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchWorkout = async () => {
-      const res = await axios.get(`http://localhost:8000/workouts/${id}`);
+      const res = await axios.get(`http://localhost:8000/exercises/${id}`);
       setWorkout(res.data);
     };
     fetchWorkout();
@@ -35,11 +35,11 @@ const EditWorkout = () => {
           <form className="card-body" onSubmit={handleSubmit}>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Add Type of Workout</span>
+                <span className="label-text">Edit Workout Name</span>
               </label>
               <input
                 type="text"
-                placeholder="Workout Type"
+                placeholder="Workout"
                 className="input input-bordered"
                 name="workoutName"
                 onChange={handleChange}
@@ -52,7 +52,7 @@ const EditWorkout = () => {
             </div>
             <div className="form-control mt-3">
               <button className="btn btn-primary" type="submit">
-                Start Workout
+                Edit Workout
               </button>
             </div>
           </form>

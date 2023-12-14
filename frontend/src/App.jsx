@@ -7,10 +7,11 @@ import Dashboard from './pages/Dashboard';
 import HomeLayout from './pages/HomeLayout';
 import Error from './pages/Error';
 import AllWorkouts from './pages/AllWorkouts';
-import AddWorkout from './pages/AddWorkout';
-import Stats from './pages/Stats';
-import Profile from './pages/Profile';
+import AddWorkout from './components/AddWorkout';
+
 import ViewWorkout from './pages/ViewWorkout';
+import EditWorkout from './components/EditWorkout';
+import AddExercise from './components/AddExercise';
 
 const router = createBrowserRouter([
   {
@@ -37,8 +38,9 @@ const router = createBrowserRouter([
           { index: true, element: <AllWorkouts /> },
           { path: 'addworkout', element: <AddWorkout /> },
           { path: 'viewworkout/:id', element: <ViewWorkout /> },
-          { path: 'stats', element: <Stats /> },
-          { path: 'profile', element: <Profile /> },
+          { path: 'editworkout/:id', element: <EditWorkout /> },
+          { path: 'addexercise/:id', element: <AddExercise /> },
+          { path: 'editexercise/:id', element: <EditWorkout /> },
         ],
       },
     ],
